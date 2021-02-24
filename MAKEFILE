@@ -10,14 +10,12 @@ CC 			:= g++
 CXXFLAGS	?= --std=c++11 -Wall
 TARGET_DIR 	:= ${CURDIR}/bin/$(PLATFORM)/$(ARCH)
 TARGET 		:= Chess.exe
-OBJ_DIR 	:= $(TARGET_DIR)/obj
 
 INCLUDE := ${CURDIR}/include
 LIB 	:= ${CURDIR}/lib
 
 # Folders
 SRC=$(CURDIR)/src
-BIN=$(CURDIR)/bin
 OBJ=$(BIN)/obj
 
 ifeq ($(DEBUG), 1)
@@ -56,7 +54,6 @@ SRC_FILES := $(subst .path,$(SRC_DIR),$(FILES))
 .phony: clean
 	
 $(TARGET): $(OBJ_FILES)
-	-@mkdir $(TARGET_DIR)
 	@echo Building $(@F)
 	@$(CC)  $(CXXFLAGS) -o $(TARGET_DIR)/$@ $^ $(LDFLAGS)
 	@echo Build Successful!
@@ -70,3 +67,7 @@ $(OBJ_FILES): $(SRC_FILES)
 clean:
 	@del /Q /S "$(OBJ_DIR)\*"
 	@echo Cleaned!
+
+createDir:
+	-@mkdir $(TARGET_DIR)
+	-@mkdir $(OBJ_DIR)
