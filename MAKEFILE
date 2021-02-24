@@ -1,0 +1,71 @@
+GITHUB_TASKS 	?= 0
+DEBUG 			?= 0
+
+DEFINES		:= 
+LIBRARIES	:= 
+
+ARCH 		?= x86
+PLATFORM 	?= windows
+CC 			:= g++
+CXXFLAGS	?= --std=c++11 -Wall
+TARGET_DIR 	:= ${CURDIR}/bin/$(PLATFORM)/$(ARCH)
+TARGET 		:= Chess.exe
+OBJ_DIR 	:= $(TARGET_DIR)/obj
+
+INCLUDE := ${CURDIR}/include
+LIB 	:= ${CURDIR}/lib
+
+# Folders
+SRC=$(CURDIR)/src
+BIN=$(CURDIR)/bin
+OBJ=$(BIN)/obj
+
+ifeq ($(DEBUG), 1)
+	CXXFLAGS += -O0
+	DEFINES += -D _DEBUG
+else
+	CXXFLAGS += -O3	
+ifeq ($(PLATFORM),windows)
+	CXXFLAGS += -Wl,-subsystem,windows
+endif
+endif
+
+ifeq ($(ARCH), x64)
+	CXXFLAGS += -m64
+else
+	CXXFLAGS += -m32
+endif
+
+TARGET += $(TARGET_EXT)
+
+CXXFLAGS += -L$(LIB)/$(ARCH)
+CPPFLAGS += -I$(INCLUDE)
+LDFLAGS := $(DEFINES)$(LIBRARIES)
+
+SRC_DIR := $(CURDIR)/src
+OBJ_DIR := $(CURDIR)/obj
+
+# Files
+FILES=\
+	.path/Chess.cpp
+
+OBJ_FILES := $(subst .path,$(OBJ_DIR),$(FILES))
+OBJ_FILES := $(subst .cpp,.o,$(OBJ_FILES))
+SRC_FILES := $(subst .path,$(SRC_DIR),$(FILES))
+
+.phony: clean
+	
+$(TARGET): $(OBJ_FILES)
+	@echo Building $(@F)
+	@$(CC)  $(CXXFLAGS) -o $(TARGET_DIR)/$@ $^ $(LDFLAGS)
+	@echo Build Successful!
+
+$(OBJ_FILES): $(SRC_FILES)
+	-@mkdir "$(@D)"
+	@echo Compiling $(@F)
+	@$(CC) $(CPPFLAGS) $(CXXFLAGS) -c -o $@ $< 
+	@echo Compiled $(@F)
+
+clean:
+	@del /Q /S "$(OBJ_DIR)\*"
+	@echo Cleaned!
