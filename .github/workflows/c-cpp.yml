@@ -13,5 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name: Initialize
+      run: make makedir
     - name: Build
       run: make PLATFORM=linux ARCH=x86 GITHUB_TASKS=1
