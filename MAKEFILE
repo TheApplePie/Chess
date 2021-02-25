@@ -14,10 +14,6 @@ TARGET 		:= Chess.exe
 INCLUDE := ${CURDIR}/include
 LIB 	:= ${CURDIR}/lib
 
-# Folders
-SRC=$(CURDIR)/src
-OBJ=$(BIN)/obj
-
 ifeq ($(DEBUG), 1)
 	CXXFLAGS += -O0
 	DEFINES += -D _DEBUG
@@ -40,8 +36,8 @@ CXXFLAGS += -L$(LIB)/$(ARCH)
 CPPFLAGS += -I$(INCLUDE)
 LDFLAGS := $(DEFINES)$(LIBRARIES)
 
-SRC_DIR := $(CURDIR)/src
-OBJ_DIR := $(CURDIR)/obj
+SRC_DIR := ${CURDIR}/src
+OBJ_DIR := ${CURDIR}/obj
 
 # Files
 FILES=\
