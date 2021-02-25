@@ -13,5 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
     - name: Build
       run: make PLATFORM=windows ARCH=x64 GITHUB_TASKS=1
