@@ -51,7 +51,7 @@ OBJ_FILES := $(subst .path,$(OBJ_DIR),$(FILES))
 OBJ_FILES := $(subst .cpp,.o,$(OBJ_FILES))
 SRC_FILES := $(subst .path,$(SRC_DIR),$(FILES))
 
-.phony: clean
+.phony: clean createDir
 	
 $(TARGET): $(OBJ_FILES)
 	@echo Building $(@F)
