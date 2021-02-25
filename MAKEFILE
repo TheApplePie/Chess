@@ -69,5 +69,5 @@ clean:
 	@echo Cleaned!
 
 createDir:
-	-@mkdir $(TARGET_DIR)
-	-@mkdir $(OBJ_DIR)
+	-@mkdir "$(TARGET_DIR)"
+	-@mkdir "$(OBJ_DIR)"
