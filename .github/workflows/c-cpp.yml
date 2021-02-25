@@ -9,9 +9,11 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v2
+    - name: Initialize
+      run: make createDir
     - name: Build
-      run: make PLATFORM=linux ARCH=x86 GITHUB_TASKS=1
+      run: make PLATFORM=windows ARCH=x64 GITHUB_TASKS=1
