@@ -13,7 +13,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Initialize
-      run: make createDir
     - name: Build
       run: make PLATFORM=windows ARCH=x64 GITHUB_TASKS=1

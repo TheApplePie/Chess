@@ -63,7 +63,3 @@ $(OBJ_FILES): $(SRC_FILES)
 clean:
 	@del /Q /S "$(OBJ_DIR)\*"
 	@echo Cleaned!
-
-createDir:
-	-@mkdir "$(TARGET_DIR)"
-	-@mkdir "$(OBJ_DIR)"
