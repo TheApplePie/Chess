@@ -54,6 +54,8 @@
         "xutility": "cpp",
         "xiosbase": "cpp",
         "xlocale": "cpp",
-        "xmemory": "cpp"
+        "xmemory": "cpp",
+        "graphics.h": "c",
+        "chess.h": "c"
     }
 }

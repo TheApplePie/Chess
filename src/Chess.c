@@ -1,23 +1,11 @@
-#include "Chess.hpp"
+#include "Chess.h"
+#include "Graphics/Graphics.h"
 #include <stdio.h>
 
 int main(int argc, char* argv[])
 {
-    LoadFEN(StartingFEN);
-
-    for (size_t i = 0; i < sizeof(Board); i++)
-    {
-        printf("%d\n", Board[i]);
-    }
-    printf("-------");
-    printf("%d\n",Board[63]);
-
-    if (GetColour(Board[4]) == Black)
-    {
-        printf("test");
-    }
-    
-
+   
+    UpdateScreen();
 
     while(true) {}
 }
