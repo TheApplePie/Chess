@@ -7,7 +7,7 @@ LIBRARIES	:=
 ARCH 		?= x86
 PLATFORM 	?= windows
 CC 			:= g++
-CXXFLAGS	?= --std=c++11 -Wall
+CXXFLAGS	?= --std=c++11 -Wall -municode
 TARGET_DIR 	:= ${CURDIR}/bin/$(PLATFORM)/$(ARCH)
 TARGET 		:= Chess.exe
 

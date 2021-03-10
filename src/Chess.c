@@ -2,14 +2,6 @@
 #include "Graphics/Graphics.h"
 #include <stdio.h>
 
-int main(int argc, char* argv[])
-{
-   
-    UpdateScreen();
-
-    while(true) {}
-}
-
 void LoadFEN(char* in) 
 {
     for (unsigned char i = 0; i < sizeof(Board); i++)
@@ -17,7 +9,7 @@ void LoadFEN(char* in)
         switch(in[i])       
         {
             case 'p':
-                Board[i] = (char)(Pawn | Black);
+                Board[i] = Pawn | Black;
             break;
             case 'P':
                 Board[i] = (char)(Pawn | White);

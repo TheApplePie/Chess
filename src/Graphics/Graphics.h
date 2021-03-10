@@ -9,6 +9,9 @@
 #endif
 
 //Pre-Proccesor Definitions
+#define _UNICODE
+#define UNICODE 
+
 //Pieces
 
 #define Blank       0x0
